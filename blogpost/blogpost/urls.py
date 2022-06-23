@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+
 from django.conf import settings
 from django.urls import path, include # new
 from django.conf.urls.static import static # new
@@ -24,11 +25,13 @@ urlpatterns = [
     url(r'^', include('blog.urls')),
 
     ]
-handler404 = "blog.views.page_not_found_view"
+
+
 
 if settings.DEBUG: # new
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+handler404 = 'projectApp.views.error_404_view'
 
 
 
