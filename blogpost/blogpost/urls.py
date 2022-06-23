@@ -22,8 +22,9 @@ from django.conf.urls.static import static # new
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('blog.urls')),
-    ]
 
+    ]
+handler404 = "blog.views.page_not_found_view"
 
 if settings.DEBUG: # new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

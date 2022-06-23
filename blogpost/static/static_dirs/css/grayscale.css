@@ -139,7 +139,12 @@ a:focus {
         background: #000;
     }
 }
-
+.inputs{
+color:black;
+margin: 0;
+font: inherit;
+line-height: normal;
+}
 .intro {
     display: table;
     width: 100%;

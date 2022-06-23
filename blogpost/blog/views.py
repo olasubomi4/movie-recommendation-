@@ -1,4 +1,4 @@
-import imdb
+
 import pandas as pd
 import numpy as np
 from django.shortcuts import render,get_object_or_404
@@ -202,9 +202,8 @@ class HomePageView(View):
 
 
 
-
-
-
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
 
 
 #class CreatePostView(CreateView): # new

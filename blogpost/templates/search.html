@@ -8,12 +8,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <form method="GET" action=".">
-					<input type="text" name="query" placeholder="Search Movies!" class="btn btn-default btn-lg" />
+					<input type="text"  class="inputs"  name="query" placeholder="Search Movies!"  />
 					<input type="submit" value="Search" class="btn btn-default btn-lg"/>
 				</form>
 				{% if show_results %}
 				{% for i in results %}
 					<p><a href="movie/?query={{ i.original_title }}">{{ i.original_title }}</a> </p>
+
 				{% endfor %}
 				{% endif %}
             </div>

@@ -10,10 +10,10 @@ from django.urls import reverse_lazy # new
 
 
 class RegistrationForm(forms.Form):
-	username = forms.CharField(max_length=30 ,widget=forms.TextInput(attrs={'class' : 'btn btn-default btn-lg', 'placeholder': 'username'}))
-	email = forms.EmailField(widget=forms.TextInput(attrs={'class' : 'btn btn-default btn-lg', 'placeholder': 'e-mail'}))
-	password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'btn btn-default btn-lg', 'placeholder': 'password'}))
-	password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'btn btn-default btn-lg', 'placeholder': 'Retype password'}))
+	username = forms.CharField(max_length=30 ,widget=forms.TextInput(attrs={ 'class': 'inputs','placeholder': 'username'}))
+	email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'inputs','placeholder': 'e-mail'}))
+	password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'inputs','placeholder': 'password'}))
+	password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'inputs','placeholder': 'Retype password'}))
 
 	def cleaned_password(self):
 		if 'password1' in self.cleaned_data:
