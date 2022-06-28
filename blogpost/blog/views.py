@@ -142,11 +142,11 @@ class test(View):
             query = request.GET['query']
 
             df = pd.read_csv("movie_dataset.csv")
-
-            features = ['keywords', 'cast', 'genres', 'director']
+           #df.dropna(inplace=True)
+            features = ['keywords', 'cast', 'genres', 'director','popularity']
 
             def combine_features(row):
-                return row['keywords'] + " " + row['cast'] + " " + row['genres'] + " " + row['director']
+                return row['keywords'] + " " + row['cast'] + " " + row['genres'] + " " + row['director'] + " " + str(row['popularity'])
 
             for feature in features:
                 df[feature] = df[feature].fillna('')  # filling all NaNs with blank string
@@ -172,11 +172,17 @@ class test(View):
             similar_movies = list(enumerate(cosine_sim[
                                                 movie_index]))  # accessing the row corresponding to given movie to find all the similarity scores for that movie and then enumerating over it
             sorted_similar_movies = sorted(similar_movies, key=lambda x: x[1], reverse=True)[1:]
-
-            print("Top 5 similar movies to " + movie_user_likes + " are:\n")
-            for element in sorted_similar_movies[:10]:
-                shows = (get_title_from_index(element[0]))
-                show.append(shows)
+            sort_size = len(sorted_similar_movies)
+            if sort_size > 10:
+                print("Top 10 similar movies to " + movie_user_likes + " are:\n")
+                for element in sorted_similar_movies[:10]:
+                    shows = (get_title_from_index(element[0]))
+                    show.append(shows)
+            else:
+                print("Top " + str(sort_size) + "similar movies to " + movie_user_likes + " are:\n")
+                for element in sorted_similar_movies[:sort_size]:
+                    shows = (get_title_from_index(element[0]))
+                    show.append(shows)
 
         # model=Post
         # obj= get_object_or_404(model, title=show[0])
