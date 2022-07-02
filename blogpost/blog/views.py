@@ -20,11 +20,11 @@ from django.urls import reverse_lazy
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from blog.models import movies, links
+
 from django.db.models import Q
 from .forms import RegistrationForm
 import pandas as pd
-from .recommendation import *
+
 
 from django.views.generic import ListView
 # from .models import Post
